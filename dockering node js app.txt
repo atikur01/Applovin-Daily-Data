@@ -1,0 +1,41 @@
+FROM node:slim
+WORKDIR /app
+COPY . /app
+RUN npm install
+EXPOSE 3000
+CMD node index.js
+
+
+docker build -t coc13259/hey-nodejs:0.0.2.RELEASE .
+
+docker build -t coc13259/applovin-daily-data:0.0.2.RELEASE .
+
+docker container run -d -p 3000:3000 coc13259/applovin-revenue-data:0.0.2.RELEASE  
+docker container ls
+docker container stop d6dd7a80b617
+
+docker push coc13259/hey-nodejs:0.0.2.RELEASE
+docker push coc13259/applovin-daily-data:0.0.2.RELEASE
+
+
+docker pull coc13259/hey-nodejs:0.0.2.RELEASE
+
+docker pull coc13259/hey-nodejs:0.0.1.RELEASE
+
+
+docker container run -d -p 3000:3000 coc13259/hey-nodejs:0.0.2.RELEASE  
+docker container run -d -p 3000:3000 coc13259/hey-nodejs:0.0.1.RELEASE
+
+
+docker run -d -p 3002:3002 coc13259/applovin-daily-data:0.0.2.RELEASE
+
+
+http://ec2-18-144-83-67.us-west-1.compute.amazonaws.com:3000/send-email
+
+
+
+
+
+
+docker container rm 3a0701ea42dc
+
